@@ -9,7 +9,7 @@ angular.module('starter.config', [])
         /**
          * Interceptamos los pedidos http para mostrar los spinners.
          */
-        $httpProvider.interceptors.push(function($rootScope) {
+        $httpProvider.interceptors.push(['$rootScope', function($rootScope) {
             return {
                 request: function(config) {
                     $rootScope.$broadcast('loading:show');
@@ -29,6 +29,6 @@ angular.module('starter.config', [])
                 }
 
             };
-        });
+        }]);
     }
 ]);
